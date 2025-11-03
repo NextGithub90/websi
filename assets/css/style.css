@@ -1,0 +1,425 @@
+/* Theme */
+:root {
+  --color-primary: #1e3a8a; /* navy */
+  --color-secondary: #10b981; /* emerald */
+  --color-accent: #f59e0b; /* amber */
+  --color-bg-soft: #f8fafc;
+  --color-bg: #ffffff;
+  --radius: 14px;
+  --shadow-sm: 0 6px 20px rgba(2, 6, 23, 0.06);
+  --shadow-md: 0 12px 30px rgba(2, 6, 23, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  background: var(--color-bg);
+  color: #0b1220;
+}
+
+/* Modern buttons */
+.btn {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-position 0.3s ease;
+}
+.btn-primary {
+  border: none;
+  background-size: 150% 150%;
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+  background-position: 30% 70%;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-outline-primary {
+  border-color: #1e3a8a;
+  color: #1e3a8a;
+}
+.btn-outline-primary:hover {
+  background-color: #1e3a8a;
+  color: #fff;
+}
+
+/* Navbar - glass & underline hover */
+.navbar {
+  backdrop-filter: saturate(160%) blur(10px);
+  background: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(2, 6, 23, 0.06);
+}
+.navbar.navbar-light .nav-link {
+  position: relative;
+  color: #0f172a;
+}
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #1e3a8a, #10b981);
+  transition: width 0.25s ease;
+}
+.navbar .nav-link:hover {
+  color: #0b1220;
+}
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  width: 100%;
+}
+.navbar-brand span {
+  color: var(--color-primary);
+}
+.navbar-nav {
+  list-style: none;
+  padding-left: 0;
+}
+.navbar-scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Hero */
+.hero-section {
+  background: radial-gradient(1200px 500px at 10% 0%, rgba(30, 58, 138, 0.14), transparent), radial-gradient(800px 400px at 90% 10%, rgba(16, 185, 129, 0.14), transparent);
+}
+.hero-section::before,
+.hero-section::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-section::before {
+  background: #0ea5e9;
+  opacity: 0.15;
+  left: -120px;
+  top: -40px;
+}
+.hero-section::after {
+  background: #10b981;
+  opacity: 0.15;
+  right: -120px;
+  top: 80px;
+}
+.hero-visual {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  z-index: 1;
+}
+.hero-visual .card-body {
+  padding: 0;
+}
+
+/* Sections */
+.section-padding {
+  padding: 4rem 0;
+}
+.section-padding .h3 {
+  letter-spacing: 0.2px;
+}
+
+/* Cards - modern base */
+.card {
+  border-radius: var(--radius);
+  border: 1px solid rgba(2, 6, 23, 0.06);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Variants */
+.kv .bi {
+  display: inline-block;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.15), rgba(16, 185, 129, 0.15));
+}
+.segment-card {
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.segment-card:hover {
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.18);
+}
+.product-card {
+  position: relative;
+  overflow: hidden;
+}
+.product-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(16, 185, 129, 0.35));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Services & Industries cards – soft glass */
+#services .card,
+#industries .card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95));
+  backdrop-filter: blur(6px);
+}
+#services .card:hover,
+#industries .card:hover {
+  border-color: rgba(30, 58, 138, 0.25);
+  /* Override global glass background to blue gradient on hover */
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-accent)) !important;
+  color: #fff;
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.25);
+}
+
+/* Portfolio cards – image zoom */
+#portfolio .card {
+  overflow: hidden;
+}
+#portfolio .card-img-top {
+  transition: transform 0.35s ease;
+}
+#portfolio .card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Testimonials */
+.testimonial-card {
+  border-radius: var(--radius);
+  border: 1px solid rgba(2, 6, 23, 0.06);
+  box-shadow: var(--shadow-sm);
+}
+.testimonial-card .stars .bi-star-fill {
+  color: #f59e0b;
+}
+.testimonial-card img {
+  border: 2px solid rgba(2, 6, 23, 0.06);
+}
+
+/* Footer */
+footer {
+  background-color: #fff;
+}
+
+/* Utilities */
+.text-primary {
+  color: var(--color-primary) !important;
+}
+.bg-light {
+  background-color: var(--color-bg-soft) !important;
+}
+.tilt-sm:hover {
+  transform: translateY(-3px) rotateX(2deg) rotateY(-2deg);
+}
+.hover-raise:hover {
+  transform: translateY(-3px);
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 24px rgba(22, 163, 74, 0.35);
+  z-index: 1050;
+}
+.whatsapp-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(22, 163, 74, 0.45);
+}
+.whatsapp-fab .bi-whatsapp {
+  font-size: 1.5rem;
+}
+@media (max-width: 576px) {
+  .whatsapp-fab {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .display-5 {
+    font-size: 2rem;
+  }
+}
+
+/* Finance table */
+.finance-table thead tr {
+  background-color: #15803d;
+  color: #fff;
+}
+.finance-table th {
+  border-color: #0f6a31;
+}
+.finance-table td {
+  vertical-align: middle;
+}
+.finance-table .btn {
+  border-radius: 8px;
+}
+
+/* AOS/Reveal fallback: show content if JS didn't initialize */
+[data-aos]:not(.aos-init) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Feature list (modern Why Choose Us) */
+.feature-list {
+  position: relative;
+  padding-left: 2.8rem;
+  display: grid;
+  gap: 1rem;
+}
+.feature-list::before {
+  content: "";
+  position: absolute;
+  left: 1.6rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #1e3a8a, #10b981);
+  opacity: 0.35;
+}
+.feature-item {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.96));
+  border: 1px solid rgba(2, 6, 23, 0.08);
+  box-shadow: var(--shadow-sm);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+}
+.feature-item::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 18px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border: 1px solid rgba(2, 6, 23, 0.08);
+  transform: rotate(45deg);
+  border-top-right-radius: 12px;
+}
+.feature-number {
+  position: absolute;
+  left: -2.8rem;
+  top: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4720b1, #adc0ff);
+  color: #0b1220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.25);
+}
+.feature-item h4 {
+  margin: 0 0 0.25rem;
+}
+.feature-item p {
+  margin: 0;
+}
+@media (max-width: 576px) {
+  .mbbile {
+    flex-wrap: nowrap !important;
+  }
+  .feature-list {
+    padding-left: 0;
+  }
+  .feature-list::before {
+    display: none;
+  }
+  .feature-number {
+    position: static;
+    width: 32px;
+    height: 32px;
+    margin-right: 0.5rem;
+    display: inline-flex;
+  }
+  .feature-item {
+    padding-left: 0.75rem;
+  }
+}
+/* Global card hover — modern blue variant */
+:root {
+  --brand-blue: #2563eb; /* blue-600 */
+  --brand-blue-accent: #7aa2ff; /* lighter accent */
+}
+
+.card {
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Exclude hero image container from hover color change */
+.card:not(.hero-visual):hover {
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-accent));
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.25);
+  border-color: transparent;
+}
+
+.card:not(.hero-visual):hover h1,
+.card:not(.hero-visual):hover h2,
+.card:not(.hero-visual):hover h3,
+.card:not(.hero-visual):hover .h5,
+.card:not(.hero-visual):hover .h6,
+.card:not(.hero-visual):hover p,
+.card:not(.hero-visual):hover small,
+.card:not(.hero-visual):hover li {
+  color: #fff !important;
+}
+
+.card:not(.hero-visual):hover .text-muted {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Buttons inside cards: keep readable contrast on hover */
+.card:not(.hero-visual):hover .btn-outline-primary {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.card:not(.hero-visual):hover .btn-primary {
+  background-color: #fff;
+  color: var(--brand-blue);
+  border-color: #fff;
+}
